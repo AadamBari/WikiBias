@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Cultural Bias in Wikipedia</title>
+    <link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+
+    {#Loads path to static files#}
+
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+</head>
+
+<body>
+    <div class="login-card">
+        <h1>Choose Article and Languages</h1>
+        <form method="post">
+
+            <input type="text" name="title" placeholder="Article Name" >
+
+            {% if all_langs %}
+
+                <select>
+                    {% for lang in all_langs %}
+                    <option>{{ lang.name }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <select>
+                    {% for lang in all_langs %}
+                    <option>{{ lang.name }}</option>
+                    {% endfor %}
+                </select>
+
+
+            {% else %}
+
+                <h3>No languages available</h3>
+
+            {% endif %}
+
+
+            <input type="submit" name="query" class="login login-submit" value="Analyse!">
+        </form>
+
+        <div class="login-help">
+            <a href="help.html">help</a> • <a href="#">about</a>
+        </div>
+    </div>
+
+
+</body>
+</html>
