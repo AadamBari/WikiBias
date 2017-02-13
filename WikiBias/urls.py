@@ -19,7 +19,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    url(r'^main/', include('main.urls')),
+    # homepage URL
+    url(r'^$', include('main.urls')),
     url(r'^analysis/', include('analysis.urls')),
     url(r'^admin/', admin.site.urls),
     # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
