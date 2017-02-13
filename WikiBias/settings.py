@@ -25,7 +25,7 @@ SECRET_KEY = 'lpdes-rnx23ld+-vq(j-31#dtre!z&wrf9ziyz4@=va*v66x#e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["wikibias.info", "localhost"]
+ALLOWED_HOSTS = [".wikibias.info", "localhost"]
 
 
 # Application definition
