@@ -17,11 +17,11 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from main import views
+# from main import views
 
 urlpatterns = [
     # homepage URL
-    url(r'', include('main.urls')),
+    url(r'', include('main.urls', namespace='main')),
     url(r'^analysis/', include('analysis.urls')),
     url(r'^myadmin/', admin.site.urls),
     # url(r'^process/', include('main.urls')),
