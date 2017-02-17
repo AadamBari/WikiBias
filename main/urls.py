@@ -7,5 +7,5 @@ app_name = 'main'
 urlpatterns = [
     # /main
     url(r'^$', views.index, name='index'),
-    # url(r'^success/', views.success, name='success'),
+    url(r'^process/', views.process, name='process'),
 ]

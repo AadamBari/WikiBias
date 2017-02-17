@@ -21,9 +21,9 @@ from main import views
 
 urlpatterns = [
     # homepage URL
-    url(r'^$', include('main.urls')),
+    url(r'', include('main.urls')),
     url(r'^analysis/', include('analysis.urls')),
     url(r'^myadmin/', admin.site.urls),
-    url(r'^process/', views.process, name='process'),
+    url(r'^process/', include('main.urls')),
     # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 ]

@@ -61,7 +61,7 @@ def process(request):
     # i.e. checking if page exists ad returning pageid
     try:
         for id in pages:
-            pageidnum = pages[id]['paged']  # holds numeric page id value]
+            pageidnum = pages[id]['pageid']  # holds numeric page id value]
             if pageidnum:
                 return analysis.views.index(request)
     except KeyError:
