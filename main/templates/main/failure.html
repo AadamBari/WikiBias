@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <h1>Error!</h1>
+    You entered <strong>{{ request.session.article }}</strong> for the article.
+    <br>
+    You selected the languages <strong>{{ request.session.lang1 }}</strong> and <strong>{{ request.session.lang2 }}</strong>
+    <br>
+    URL: {{ request.session.respURL }}
+    <br><br>
+    The article you have selected does not exist in your chosen language(s).
+    Please be check your spelling.
+    <br>If in doubt, take the name of the article from the wikipedia page URL<br><br>
+    
+    {% load staticfiles %}
+    <img src="{% static 'main/screenshot.jpg' %}" alt="" /></a>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -20,23 +20,25 @@
 <body>
     <div class="login-card">
         <h1>Choose Article and Languages</h1>
-        <form method="post">
-
-            <input type="text" name="title" placeholder="Article Name" >
+        {# url checks urls.py for link which refers to views.py function   #}
+        {#   if redirecting to analysis index view     {% url 'analysis:index' %}#}
+        <form action="{% url 'process' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="article" placeholder="Article Name" >
 
             {% if all_langs %}
 
-                <select>
+                <select name = "langOne">
                     {% for lang in all_langs %}
-                    <option>{{ lang.name }}</option>
+                    <option value = "{{ lang.name}}">{{ lang.name }}</option>
                     {% endfor %}
                 </select>
-                <br>
-                <select>
+                <select name = "langTwo">
                     {% for lang in all_langs %}
-                    <option>{{ lang.name }}</option>
+                    <option value = "{{ lang.name }}">{{ lang.name }}</option>
                     {% endfor %}
                 </select>
+
 
 
             {% else %}
@@ -44,6 +46,11 @@
                 <h3>No languages available</h3>
 
             {% endif %}
+
+{#            <select name = "mydropdown">#}
+{#                <option selected value="number">Hello</option>#}
+{#                <option value="text">Goodbye</option>#}
+{#            </select>#}
 
 
             <input type="submit" name="query" class="login login-submit" value="Analyse!">

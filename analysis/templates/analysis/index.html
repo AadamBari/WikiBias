@@ -80,10 +80,15 @@
 						<div class="container">
 
 							<header>
-								<h2 class="alt">Welcome to the <strong>Cultural Bias in Wikipedia</strong> prototype website<br />
-								 This shows what the final website might look like</h2>
-								<p>Aadam Bari<br />
-								Final Year Project</p>
+								<h2 class="alt">Welcome to the <strong>Cultural Bias in Wikipedia</strong> website<br />
+								 You have selected the article: <strong>{{ request.session.article }}</strong> <br>
+                                    and the languages <strong>{{ request.session.lang1 }}</strong> and <strong>{{ request.session.lang2 }}</strong></h2>
+								<p>Aadam Bari - Final Year Project<br />
+								DT228 BSc in Computer Science (Hons) - 2017 <br>
+                                Supervisor: Dr. Pierpaolo Dondio<br>
+                                    Query URL:<br>
+                                    {{ request.session.respURL }}
+                                </p>
 							</header>
 
 							<footer>
@@ -162,7 +167,7 @@
 								<h2>Number of watchers</h2>
 							</header>
 
-							<a href="#" class="image featured"><img src="{% static 'analysis/images/watchers.png' %}" alt="" /></a>
+							<a href="#" class="image fit"><img src="{% static 'analysis/images/pic08.jpg' %}" alt="" /></a>
 
 							<p>Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus
 							ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae
