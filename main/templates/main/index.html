@@ -22,7 +22,7 @@
         <h1>Choose Article and Languages</h1>
         {# url checks urls.py for link which refers to views.py function   #}
         {#   if redirecting to analysis index view     {% url 'analysis:index' %}#}
-        <form action="{% url 'process' %}" method="post">
+        <form action="{% url 'main:process' %}" method="post">
             {% csrf_token %}
             <input type="text" name="article" placeholder="Article Name" >
 
