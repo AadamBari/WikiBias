@@ -87,7 +87,8 @@
 								DT228 BSc in Computer Science (Hons) - 2017 <br>
                                 Supervisor: Dr. Pierpaolo Dondio<br>
                                     Query URL:<br>
-                                    {{ request.session.respURL }}
+                                    {{ request.session.respURL }}<br>
+                                    {{ request.session.articledata }}
                                 </p>
 							</header>
 
@@ -106,7 +107,8 @@
 								<h2>Page length</h2>
 							</header>
 
-							<p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
+							<p>{{ length }} bytes<br>
+                                Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
 							egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
 							Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis
 							fusce hendrerit lacus ridiculus.</p>
@@ -169,7 +171,8 @@
 
 							<a href="#" class="image fit"><img src="{% static 'analysis/images/pic08.jpg' %}" alt="" /></a>
 
-							<p>Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus
+							<p>There are {{ watchers }}   <br>
+                                Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus
 							ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae
 							laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem
 							parturient nulla quam placerat viverra mauris non cum elit tempus ullamcorper

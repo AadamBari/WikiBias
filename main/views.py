@@ -47,9 +47,12 @@ def process(request):
     my_atts['prop'] = 'info'  # prop=info
     my_atts['format'] = 'json'  # format=json
     my_atts['titles'] = wikipage  # title=brad+pitt
+    my_atts['inprop'] = 'watchers'  # |protection'
 
     resp = requests.get(baseurl, params=my_atts)
     data = resp.json()
+
+    request.session['articledata'] = data
 
     # make url session variable
     request.session['respURL'] = resp.url  # the url
@@ -63,15 +66,13 @@ def process(request):
         for id in pages:
             pageidnum = pages[id]['pageid']  # holds numeric page id value]
             if pageidnum:
+                # put pageid into single quotes so can access json later
+                request.session['ArticlePageID'] = '{0}'.format(pageidnum)  # pageid = 'pageid'
                 return analysis.views.index(request)
     except KeyError:
         # Key is not present
         return render(request, 'main/failure.html')
         # exit()
-
-
-
-
 
 
 
