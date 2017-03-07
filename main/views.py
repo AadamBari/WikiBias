@@ -34,31 +34,30 @@ def process(request):
 
     title = '{0}'.format(article)  # put the title in single quotes
 
+    # Get information for first article
     baseurl = get_base_url(lang1)
-    # eg if english: "http://en.wikipedia.org/w/api.php"
-
-    # Make api call and return response generated
     resp = info_request(title, baseurl)
+    data = resp.json()
+    pageid = validate_pageid(request, data)
 
-    # extract data i json format from response
+    # make session variables for first article data
+    # request.session['articledata'] = data
+    request.session['respURL'] = resp.url  # the url
+    request.session['second'] = get_second_language_title(request, lang1, lang2, title, pageid)
+
+    return analysis.views.index(request, data, pageid)
+
+
+def get_second_language_title(request, lang1, lang2, title, pageid):
+    """get title for second language"""
+
+    base = get_base_url(lang1)
+    resp = link_request(title, base, lang2)
     data = resp.json()
 
-    request.session['articledata'] = data
+    second_title = extract_title(data, pageid)
 
-    # make url session variable
-    request.session['respURL'] = resp.url  # the url
-
-    pageidnum = validate_pageid(request, data)
-
-
-    # put pageid into single quotes so can access json later
-    request.session['ArticlePageID'] = '{0}'.format(pageidnum)  # pageid = 'pageid'
-
-    request.session['second'] = get_second_language_title(request, lang1, lang2, title)
-
-    return analysis.views.index(request)
-
-
+    return second_title
 
 def get_base_url(lang):
     """Produce the base Wikipedia api url for a particular language"""
@@ -74,7 +73,7 @@ def get_base_url(lang):
 
 
 def info_request(title, baseurl):
-
+    """ Make api call and return response generated """
 
     # parameters for request
     my_atts = {}
@@ -130,13 +129,12 @@ def validate_pageid(request, data):
         return render(request, 'main/failure.html')
         # exit()
 
-    return pageidnum
+    # Return pageid in single quotes
+    return '{0}'.format(pageidnum)
 
 
-def extract_title(data, pageidnum):
-
-    # put in single quotes
-    mypageid = '{0}'.format(pageidnum)  # pageid = 'pageid'
+def extract_title(data, mypageid):
+    """ extract the title of the article in the second language"""
 
     # get langlinks
     lang_info = data['query']['pages'][mypageid]['langlinks']
@@ -148,19 +146,6 @@ def extract_title(data, pageidnum):
     title = url.rsplit('/', 1)[-1]
 
     return title
-
-def get_second_language_title(request, lang1, lang2, title):
-    """get title for second language"""
-
-    base = get_base_url(lang1)
-    resp = link_request(title, base, lang2)
-    data = resp.json()
-    my_url = resp.url
-    pageid = validate_pageid(request, data)
-
-    second_title = extract_title(data, pageid)
-
-    return second_title
 
 
 def get_language_code(language):
