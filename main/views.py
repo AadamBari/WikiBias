@@ -149,6 +149,7 @@ def extract_title(data, mypageid):
 
 
 def get_language_code(language):
+    """ Takes language as parameter and return Wikipedia language code """
 
     code_dict = {'English': 'en', 'French': 'fr', 'Italian': 'it', 'German': 'de', 'Spanish': 'es', 'Swedish': 'sv',
             'Dutch': 'nl', 'Irish': 'ga', 'Russian': 'ru'}
