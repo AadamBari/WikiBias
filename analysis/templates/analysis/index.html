@@ -17,6 +17,13 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'analysis/assets/css/main.css' %}" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+
+                    <!-- Chart.js CDN -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script> -->
+            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script> -->
+            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script> -->
+
 	</head>
 	<body>
 
@@ -171,7 +178,41 @@
 								<h2>Number of watchers</h2>
 							</header>
 
-							<a href="#" class="image fit"><img src="{% static 'analysis/images/pic08.jpg' %}" alt="" /></a>
+{#							<a href="#" class="image fit"><img src="{% static 'analysis/images/pic08.jpg' %}" alt="" /></a>#}
+                            <div id="canvas-holder" style="width:45%">
+                            <canvas id="myChart"></canvas>
+                                </div>
+                            <script>
+                            var ctx = document.getElementById("myChart");
+                            var myChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: [ "{{ request.session.lang1 }}", "{{ request.session.lang2 }}" ],
+                                    datasets: [{
+                                        label: '# of Watchers',
+                                        data: [ {{ watchers1 }}, {{ watchers2 }} ],
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255,99,132,1)',
+                                            'rgba(54, 162, 235, 1)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }]
+                                    }
+                                }
+                            });
+                            </script>
 
 							<p>There are {{ watchers1 }} watchers in {{ request.session.lang1 }}<br>
                                 There are {{ watchers2 }} watchers in {{ request.session.lang2 }}<br>
