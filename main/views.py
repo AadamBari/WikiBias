@@ -43,9 +43,19 @@ def process(request):
     # make session variables for first article data
     # request.session['articledata'] = data
     request.session['respURL'] = resp.url  # the url
-    request.session['second'] = get_second_language_title(request, lang1, lang2, title, pageid)
+    title_two = get_second_language_title(request, lang1, lang2, title, pageid)
+    request.session['second'] = title_two
 
-    return analysis.views.index(request, data, pageid)
+    # Get information for second article
+    baseurl_two = get_base_url(lang2)
+    resp_two = info_request(title_two, baseurl_two)
+    data_two = resp_two.json()
+    pageid_two = validate_pageid(request, data_two)
+
+    # make session variables for first article data
+    request.session['respURL2'] = resp_two.url
+
+    return analysis.views.index(request, data, pageid, data_two, pageid_two)
 
 
 def get_second_language_title(request, lang1, lang2, title, pageid):

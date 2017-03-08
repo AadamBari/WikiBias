@@ -88,7 +88,8 @@
                                 Supervisor: Dr. Pierpaolo Dondio<br>
                                     Query URL:<br>
                                     {{ request.session.respURL }}<br>
-                                    {{ request.session.second }}
+                                    {{ request.session.second }}<br>
+                                    {{ request.session.respURL2 }}
                                 </p>
 							</header>
 
@@ -107,7 +108,8 @@
 								<h2>Page length</h2>
 							</header>
 
-							<p>{{ length }} bytes<br>
+							<p>{{ request.session.lang1 }}: {{ length }} bytes<br>
+                                {{ request.session.lang2 }}: {{ length2 }} bytes<br>
                                 Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
 							egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
 							Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis

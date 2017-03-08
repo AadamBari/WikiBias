@@ -2,16 +2,15 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def index(request, article, thepageid):
+def index(request, article, thepageid, article_two, thepageid_two):
 
-    # article = request.session['articledata'] #same as data in main\view
     pages = article['query']['pages']
-    # thepageid = request.session['ArticlePageID']
+    pages2 = article_two['query']['pages']
 
-    # get article page length in  bytes
-    length = article['query']['pages'][thepageid]['length']
+    # get article page length in bytes
+    length = article_length(pages, thepageid)
+    length2 = article_length(pages2, thepageid_two)
 
-    #
     # check to see if watcher data in json (sometimes not available if too few watchers)
     if 'watchers' in pages[thepageid]:
         watchers = pages[thepageid]['watchers']
@@ -23,7 +22,16 @@ def index(request, article, thepageid):
 
     context = {
         "length": length,
+        "length2": length2,
         "watchers": watchers,
     }
 
     return render(request, 'analysis/index.html', context)
+
+def article_length(pages,pageid):
+    """ get article page length in bytes """
+
+    length = pages[pageid]['length']
+
+    return length
+
