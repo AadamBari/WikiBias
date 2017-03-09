@@ -43,7 +43,7 @@ def process(request):
     # make session variables for first article data
     # request.session['articledata'] = data
     request.session['respURL'] = resp.url  # the url
-    title_two = get_second_language_title(request, lang1, lang2, title, pageid)
+    title_two = get_second_language_title(request, lang1, lang2, title)
     request.session['second'] = title_two
 
     # Get information for second article
@@ -58,14 +58,15 @@ def process(request):
     return analysis.views.index(request, data, pageid, data_two, pageid_two)
 
 
-def get_second_language_title(request, lang1, lang2, title, pageid):
+def get_second_language_title(request, lang1, lang2, title):
     """get title for second language"""
 
     base = get_base_url(lang1)
     resp = link_request(title, base, lang2)
     data = resp.json()
+    pageid = validate_pageid(request, data)
 
-    second_title = extract_title(data, pageid)
+    second_title = extract_title(data, pageid, request)
 
     return second_title
 
@@ -134,7 +135,7 @@ def validate_pageid(request, data):
             pageidnum = pages[id]['pageid']  # holds numeric page id value]
             if pageidnum:
                 break
-    except KeyError:
+    except (ValueError, NameError, TypeError, KeyError):
         # Key is not present
         return render(request, 'main/failure.html')
         # exit()
@@ -143,11 +144,14 @@ def validate_pageid(request, data):
     return '{0}'.format(pageidnum)
 
 
-def extract_title(data, mypageid):
+def extract_title(data, mypageid, request):
     """ extract the title of the article in the second language"""
 
     # get langlinks
-    lang_info = data['query']['pages'][mypageid]['langlinks']
+    try:
+        lang_info = data['query']['pages'][mypageid]['langlinks']
+    except KeyError:
+        return render(request, 'main/failure.html')
 
     # get url for langlinks dictionary within list
     for link in  lang_info:
