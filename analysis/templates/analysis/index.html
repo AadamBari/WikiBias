@@ -56,6 +56,7 @@
 							-->
 							<ul>
 								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
+                                <li><a href="#images" id="images-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Images</span></a></li>
 								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Page Length</span></a></li>
 								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Number of Watchers</span></a></li>
 								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Et cetera</span></a></li>
@@ -106,6 +107,42 @@
 
 						</div>
 					</section>
+
+                <!-- Contact -->
+					<section id="images" class="four">
+						<div class="container">
+
+							<header>
+								<h2>Images</h2>
+							</header>
+
+							<p>
+                                {{ image1 }}<br>
+                                {{ image2 }}
+                            </p>
+
+                            <div class="row">
+								<div class="4u 12u$(mobile)">
+									<article class="item">
+										<a class="image fit"><img src="{{ image1 }}" alt="this article does not have an image" /></a>
+										<header>
+											<h3>{{ request.session.lang1 }} article</h3>
+										</header>
+									</article>
+                                </div>
+                                <div class="4u 12u$(mobile)">
+									<article class="item">
+										<a class="image fit"><img src="{{ image2 }}" alt="this article does not have an image" /></a>
+										<header>
+											<h3>{{ request.session.lang2 }} article</h3>
+										</header>
+									</article>
+								</div>
+                            </div>
+
+						</div>
+					</section>
+
 
 				<!-- Portfolio -->
 					<section id="portfolio" class="two">

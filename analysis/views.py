@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError
 
 # Create your views here.
 
@@ -17,12 +19,17 @@ def index(request, article, thepageid, article_two, thepageid2):
 
     watchers_exists = number_check(watchers1, watchers2)
 
+    image1 = get_image_url(pages, thepageid)
+    image2 = get_image_url(pages2, thepageid2)
+
     context = {
         "length": length,
         "length2": length2,
         "watchers1": watchers1,
         "watchers2": watchers2,
         "watchers_exists": watchers_exists,
+        "image1": image1,
+        "image2": image2,
     }
 
     return render(request, 'analysis/index.html', context)
@@ -54,3 +61,14 @@ def number_check(watcher1, watcher2):
         is_number = False
 
     return is_number
+
+def get_image_url(pages, pageid):
+
+    val = URLValidator()
+    try:
+        image_link = pages[pageid]['thumbnail']['source']
+        val(image_link)
+    except ValidationError:
+        image_link = "this article does not have a thumbnail image"
+
+    return image_link
