@@ -179,12 +179,13 @@
 							</header>
 
 {#							<a href="#" class="image fit"><img src="{% static 'analysis/images/pic08.jpg' %}" alt="" /></a>#}
+                            {% if watchers_exists %}
                             <div id="canvas-holder" style="width:45%">
-                            <canvas id="myChart"></canvas>
+                            <canvas id="watchersCanvas"></canvas>
                                 </div>
                             <script>
-                            var ctx = document.getElementById("myChart");
-                            var myChart = new Chart(ctx, {
+                            var ctx = document.getElementById("watchersCanvas");
+                            var myWatchersChart = new Chart(ctx, {
                                 type: 'bar',
                                 data: {
                                     labels: [ "{{ request.session.lang1 }}", "{{ request.session.lang2 }}" ],
@@ -213,15 +214,13 @@
                                 }
                             });
                             </script>
+                            {% endif %}
 
 							<p>There are {{ watchers1 }} watchers in {{ request.session.lang1 }}<br>
-                                There are {{ watchers2 }} watchers in {{ request.session.lang2 }}<br>
-                                Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus
-							ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae
-							laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem
-							parturient nulla quam placerat viverra mauris non cum elit tempus ullamcorper
-							dolor. Libero rutrum ut lacinia donec curae mus vel quisque sociis nec
-							ornare iaculis.</p>
+                                There are {{ watchers2 }} watchers in {{ request.session.lang2 }}
+                                {% if watchers_exists is False %} so the data could not be visualised{% endif %}
+                                <br>
+                            </p>
 
 						</div>
 					</section>

@@ -15,11 +15,14 @@ def index(request, article, thepageid, article_two, thepageid2):
     watchers1 = article_watchers(pages, thepageid)
     watchers2 = article_watchers(pages2, thepageid2)
 
+    watchers_exists = number_check(watchers1, watchers2)
+
     context = {
         "length": length,
         "length2": length2,
         "watchers1": watchers1,
         "watchers2": watchers2,
+        "watchers_exists": watchers_exists,
     }
 
     return render(request, 'analysis/index.html', context)
@@ -38,6 +41,16 @@ def article_watchers(pages, pageid):
         watchers = pages[pageid]['watchers']
 
     else:
-        watchers = "there are 30 watchers or less"
+        watchers = "less than 30"
 
     return watchers
+
+def number_check(watcher1, watcher2):
+
+    if (isinstance(watcher1, int)) and (isinstance(watcher2, int)):
+        is_number = True
+
+    else:
+        is_number = False
+
+    return is_number
