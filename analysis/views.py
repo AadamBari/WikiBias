@@ -23,6 +23,8 @@ def index(request, article, thepageid, article_two, thepageid2):
     image2 = get_image_url(pages2, thepageid2)
 
     context = {
+        "lang1": request.session["lang1"],
+        "lang2": request.session["lang2"],
         "length": length,
         "length2": length2,
         "watchers1": watchers1,
@@ -72,3 +74,17 @@ def get_image_url(pages, pageid):
         image_link = "this article does not have a thumbnail image"
 
     return image_link
+
+def get_wiki_users(lang):
+    """
+    Return the number of users for the wikipedia language
+    Source: https://en.wikipedia.org/wiki/List_of_Wikipedias
+    """
+
+    # dictionary to store number of users per wikipedia language version
+    wiki_no_of_users = {'English': '30433146', 'French': '2738662', 'Dutch': '824911', 'German': '2600919',
+                   'Swedish': '539662', 'Italian': '1478718', 'Spanish': '4537032', 'Russian': '2065967'}
+
+    wiki_users = wiki_no_of_users[lang]
+
+    return wiki_users
