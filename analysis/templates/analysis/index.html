@@ -243,7 +243,7 @@
                         </div>
 					</section>
 
-				<!-- About Me -->
+				<!-- Watchers -->
 					<section id="about" class="three">
 						<div class="container">
 
@@ -253,6 +253,8 @@
 
 {#							<a href="#" class="image fit"><img src="{% static 'analysis/images/pic08.jpg' %}" alt="" /></a>#}
                             {% if watchers_exists %}
+
+{#                                Number of watchers per language article#}
                             <div id="canvas-holder" style="width:45%">
                             <canvas id="watchersCanvas"></canvas>
                                 </div>
@@ -287,15 +289,84 @@
                                 }
                             });
                             </script>
+
+{#                                Number of watchers as percentage of total number of users#}
+                                <div id="canvas-holder" style="width:45%">
+                                    <canvas id="watchersRelative"></canvas>
+                                </div>
+                                <script>
+                                var ctx = document.getElementById("watchersRelative");
+                                var myLengthChart = new Chart(ctx, {
+                                    type: 'horizontalBar',
+                                    data: {
+                                        labels: [ "{{ request.session.lang1 }}", "{{ request.session.lang2 }}" ],
+                                        datasets: [{
+                                            label: 'Number of watchers relative to the number of users',
+                                            data: [ {{ watchers1_relative }}, {{ watchers2_relative }} ],
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)'
+                                            ],
+                                            borderColor: [
+                                                'rgba(255,99,132,1)',
+                                                'rgba(54, 162, 235, 1)'
+                                            ],
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero:true
+                                                }
+                                            }]
+                                        }
+                                    }
+                                });
+                                </script>
                             {% endif %}
+
 
 							<p>There are {{ watchers1 }} watchers in {{ request.session.lang1 }}<br>
                                 There are {{ watchers2 }} watchers in {{ request.session.lang2 }}
-                                {% if watchers_exists is False %} so the data could not be visualised{% endif %}
+                                {% if watchers_exists is False %}
+                                    so the data could not be visualised
+                                    <br> (Wikipedia doesn't provide the exact number of watchers under 30)
+                                {% endif %}
                                 <br>
                             </p>
 
+
+{#                                  Number of wikipedia users per languahe#}
+                                <div id="canvas-holder" style="width:30%">
+                                    <canvas id="wikiUsers"></canvas>
+                                </div>
+                                    <script>
+                                    var ctx = document.getElementById("wikiUsers").getContext('2d');
+                                    var myChart = new Chart(ctx, {
+                                      type: 'pie',
+                                      data: {
+                                        labels: ["{{ lang1 }} Users", "{{ lang2 }} Users"],
+                                        datasets: [{
+                                          backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)',
+                                            "#95a5a6"
+                                          ],
+                                          data: [{{ lang1_users }}, {{ lang2_users }}]
+                                        }]
+                                      }
+                                    });
+                                </script>
+
 						</div>
+
+                        <p>There are {{ lang1_users }} users in {{ request.session.lang1 }}<br>
+                            There are {{ lang2_users }} users in {{ request.session.lang2 }}
+
+
+
 					</section>
 
 				<!-- Contact -->

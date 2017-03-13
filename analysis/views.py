@@ -9,6 +9,10 @@ def index(request, article, thepageid, article_two, thepageid2):
     pages = article['query']['pages']
     pages2 = article_two['query']['pages']
 
+    # session variables for language
+    lang1 = request.session["lang1"]
+    lang2 = request.session["lang2"]
+
     # page length
     length = article_length(pages, thepageid)
     length2 = article_length(pages2, thepageid2)
@@ -22,9 +26,19 @@ def index(request, article, thepageid, article_two, thepageid2):
     image1 = get_image_url(pages, thepageid)
     image2 = get_image_url(pages2, thepageid2)
 
+    lang1_users = get_wiki_users(lang1)
+    lang2_users = get_wiki_users(lang2)
+    # all_users = get_wiki_users("Other")
+    # other_users = all_users - (lang1_users + lang2_users)
+
+    # Get the percentage of watchers relative to the total number of watchers
+    watchers1_relative = percentage(watchers1, lang1_users)
+    watchers2_relative = percentage(watchers2, lang2_users)
+
+
     context = {
-        "lang1": request.session["lang1"],
-        "lang2": request.session["lang2"],
+        "lang1": lang1,
+        "lang2": lang2,
         "length": length,
         "length2": length2,
         "watchers1": watchers1,
@@ -32,6 +46,11 @@ def index(request, article, thepageid, article_two, thepageid2):
         "watchers_exists": watchers_exists,
         "image1": image1,
         "image2": image2,
+        "lang1_users": lang1_users,
+        "lang2_users": lang2_users,
+        # "other_users": other_users,
+        "watchers1_relative": watchers1_relative,
+        "watchers2_relative": watchers2_relative,
     }
 
     return render(request, 'analysis/index.html', context)
@@ -83,8 +102,14 @@ def get_wiki_users(lang):
 
     # dictionary to store number of users per wikipedia language version
     wiki_no_of_users = {'English': '30433146', 'French': '2738662', 'Dutch': '824911', 'German': '2600919',
-                   'Swedish': '539662', 'Italian': '1478718', 'Spanish': '4537032', 'Russian': '2065967'}
+                        'Swedish': '539662', 'Italian': '1478718', 'Spanish': '4537032', 'Russian': '2065967',
+                        'Other': '67108835'}
 
     wiki_users = wiki_no_of_users[lang]
 
     return wiki_users
+
+def percentage(part, whole):
+    """ Returns percentage """
+    percent = 100 * float(part) / float(whole)
+    return percent
