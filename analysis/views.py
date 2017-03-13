@@ -31,11 +31,6 @@ def index(request, article, thepageid, article_two, thepageid2):
     # all_users = get_wiki_users("Other")
     # other_users = all_users - (lang1_users + lang2_users)
 
-    # Get the percentage of watchers relative to the total number of watchers
-    watchers1_relative = percentage(watchers1, lang1_users)
-    watchers2_relative = percentage(watchers2, lang2_users)
-
-
     context = {
         "lang1": lang1,
         "lang2": lang2,
@@ -49,9 +44,16 @@ def index(request, article, thepageid, article_two, thepageid2):
         "lang1_users": lang1_users,
         "lang2_users": lang2_users,
         # "other_users": other_users,
-        "watchers1_relative": watchers1_relative,
-        "watchers2_relative": watchers2_relative,
     }
+
+    if watchers_exists:
+
+        # Get the percentage of watchers relative to the total number of watchers
+        watchers1_relative = percentage(watchers1, lang1_users)
+        watchers2_relative = percentage(watchers2, lang2_users)
+
+        context['watchers1_relative'] = 'watchers1_relative'
+        context['watchers2_relative'] = 'watchers2_relative'
 
     return render(request, 'analysis/index.html', context)
 

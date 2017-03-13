@@ -141,6 +141,11 @@ def validate_pageid(request, data):
         return render(request, 'main/failure.html')
         # exit()
 
+    if isinstance(pageidnum, int):
+        pass
+    else:
+        return render(request, 'main/failure.html')
+
     # Return pageid in single quotes
     return '{0}'.format(pageidnum)
 
