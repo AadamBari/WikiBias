@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="35214c5e-055a-49b3-8b01-d72728260ddf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/templates/analysis/index.html" afterPath="$PROJECT_DIR$/analysis/templates/analysis/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/views.py" afterPath="$PROJECT_DIR$/analysis/views.py" />
     </list>
@@ -99,8 +98,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analysis/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+            <state relative-caret-position="526">
+              <caret line="69" column="38" lean-forward="false" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -111,10 +110,14 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/analysis/templates/analysis/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="657">
-              <caret line="380" column="42" lean-forward="false" selection-start-line="380" selection-start-column="42" selection-end-line="380" selection-end-column="42" />
+            <state relative-caret-position="826">
+              <caret line="61" column="151" lean-forward="false" selection-start-line="61" selection-start-column="151" selection-end-line="61" selection-end-column="151" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#section#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#section#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#section#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#16624#16630#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1242,8 +1245,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analysis/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+        <state relative-caret-position="526">
+          <caret line="69" column="38" lean-forward="false" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -1252,10 +1255,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analysis/templates/analysis/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="657">
-          <caret line="380" column="42" lean-forward="false" selection-start-line="380" selection-start-column="42" selection-end-line="380" selection-end-column="42" />
+        <state relative-caret-position="826">
+          <caret line="61" column="151" lean-forward="false" selection-start-line="61" selection-start-column="151" selection-end-line="61" selection-end-column="151" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#section#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#section#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#section#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#section#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#16624#16630#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

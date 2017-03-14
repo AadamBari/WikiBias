@@ -32,7 +32,7 @@ def index(request, article, thepageid, article_two, thepageid2):
     # other_users = all_users - (lang1_users + lang2_users)
 
     # Check to see if extract data exists and assign boolean to variable
-    extract_exists = check_extract(pages, thepageid)
+    extract_exists = check_extract(pages, thepageid, pages2, thepageid2)
 
     context = {
         "lang1": lang1,
@@ -63,9 +63,11 @@ def index(request, article, thepageid, article_two, thepageid2):
         print("the extract is here")
         # retrieve extract and assign to variable
         extract = get_extract(pages, thepageid)
+        extract2 = get_extract(pages2, thepageid2)
 
         # add to dictionary
         context['extract1'] = extract
+        context['extract2'] = extract2
 
 
 
@@ -131,10 +133,10 @@ def percentage(part, whole):
     percent = 100 * float(part) / float(whole)
     return percent
 
-def check_extract(pages, pageid):
+def check_extract(pages, pageid, pages2, pageid2):
     """ Checks to see if the first paragraph from the article was returned and present in the request data """
 
-    if 'extract' in pages[pageid]:
+    if ('extract' in pages[pageid]) and ('extract' in pages2[pageid2]):
         return True
     else:
         return False
