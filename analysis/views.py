@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
-
+# from main.views import get_language_code
+import requests
 # Create your views here.
 
 def index(request, article, thepageid, article_two, thepageid2):
@@ -70,7 +71,9 @@ def index(request, article, thepageid, article_two, thepageid2):
         context['extract2'] = extract2
 
 
-
+    yandex = translate_request(lang2, extract2)
+    print(yandex.url)
+    context['yandexurl'] = yandex.url
 
     return render(request, 'analysis/index.html', context)
 
@@ -146,3 +149,33 @@ def get_extract(pages, pageid):
     extract = pages[pageid]['extract']
 
     return extract
+
+def get_api_key():
+
+    return "trnsl.1.1.20170314T183113Z.4a6fc904e7ea1bc5.23809eb4e1d1c082364cb9e075cae6be489b7ba9"
+
+def translate_request(lang, text):
+    """ Make request to yandex api and return data """
+    api_key = get_api_key()
+
+    mycode = {'English': 'en', 'French': 'fr', 'Italian': 'it', 'German': 'de', 'Spanish': 'es', 'Swedish': 'sv',
+            'Dutch': 'nl', 'Irish': 'ga', 'Russian': 'ru'}
+
+    # code = get_language_code(lang)
+    code = mycode[lang]
+
+    base = "https://translate.yandex.net"
+    post = "/api/v1.5/tr.json/translate?key=" + api_key
+
+
+    # parameters for request
+    my_atts = {}
+
+    my_atts['text'] = text
+    my_atts['lang'] = code + '-en'  # prop=info
+    # my_atts['lang'] = 'en-fr'
+
+    # make request
+    yandex_resp = requests.get(base+post, params=my_atts)
+
+    return yandex_resp
