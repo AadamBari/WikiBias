@@ -31,6 +31,9 @@ def index(request, article, thepageid, article_two, thepageid2):
     # all_users = get_wiki_users("Other")
     # other_users = all_users - (lang1_users + lang2_users)
 
+    # Check to see if extract data exists and assign boolean to variable
+    extract_exists = check_extract(pages, thepageid)
+
     context = {
         "lang1": lang1,
         "lang2": lang2,
@@ -44,6 +47,7 @@ def index(request, article, thepageid, article_two, thepageid2):
         "lang1_users": lang1_users,
         "lang2_users": lang2_users,
         # "other_users": other_users,
+        "extract_exists": extract_exists,
     }
 
     if watchers_exists:
@@ -51,9 +55,20 @@ def index(request, article, thepageid, article_two, thepageid2):
         # Get the percentage of watchers relative to the total number of watchers
         watchers1_relative = percentage(watchers1, lang1_users)
         watchers2_relative = percentage(watchers2, lang2_users)
-
+        # Add to context dictionary
         context['watchers1_relative'] = watchers1_relative
         context['watchers2_relative'] = watchers2_relative
+
+    if extract_exists:
+        print("the extract is here")
+        # retrieve extract and assign to variable
+        extract = get_extract(pages, thepageid)
+
+        # add to dictionary
+        context['extract1'] = extract
+
+
+
 
     return render(request, 'analysis/index.html', context)
 
@@ -115,3 +130,17 @@ def percentage(part, whole):
     """ Returns percentage """
     percent = 100 * float(part) / float(whole)
     return percent
+
+def check_extract(pages, pageid):
+    """ Checks to see if the first paragraph from the article was returned and present in the request data """
+
+    if 'extract' in pages[pageid]:
+        return True
+    else:
+        return False
+
+def get_extract(pages, pageid):
+    """ Parses data to retrieve extract """
+    extract = pages[pageid]['extract']
+
+    return extract
