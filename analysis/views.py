@@ -52,8 +52,8 @@ def index(request, article, thepageid, article_two, thepageid2):
         watchers1_relative = percentage(watchers1, lang1_users)
         watchers2_relative = percentage(watchers2, lang2_users)
 
-        context['watchers1_relative'] = 'watchers1_relative'
-        context['watchers2_relative'] = 'watchers2_relative'
+        context['watchers1_relative'] = watchers1_relative
+        context['watchers2_relative'] = watchers2_relative
 
     return render(request, 'analysis/index.html', context)
 
