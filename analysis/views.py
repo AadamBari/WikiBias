@@ -70,10 +70,16 @@ def index(request, article, thepageid, article_two, thepageid2):
         context['extract1'] = extract
         context['extract2'] = extract2
 
+        if lang1 != "English":
+            yandex = translate_request(lang1, extract)
+            context['yandexurl1'] = yandex.url
 
-    yandex = translate_request(lang2, extract2)
-    print(yandex.url)
-    context['yandexurl'] = yandex.url
+        if lang2 != "English":
+            yandex2 = translate_request(lang2, extract2)
+            context['yandexurl2'] = yandex2.url
+
+
+
 
     return render(request, 'analysis/index.html', context)
 
