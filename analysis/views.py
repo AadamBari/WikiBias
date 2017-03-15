@@ -24,6 +24,7 @@ def index(request, article, thepageid, article_two, thepageid2):
 
     watchers_exists = number_check(watchers1, watchers2)
 
+    # article image
     image1 = get_image_url(pages, thepageid)
     image2 = get_image_url(pages2, thepageid2)
 
@@ -71,12 +72,25 @@ def index(request, article, thepageid, article_two, thepageid2):
         context['extract2'] = extract2
 
         if lang1 != "English":
+            # make translation request
             yandex = translate_request(lang1, extract)
             context['yandexurl1'] = yandex.url
+            translation1 = get_translated_extract(yandex.json())
+            context['translation1'] = translation1
+        else:
+            translation1 = extract
+            context['translation1'] = translation1
 
         if lang2 != "English":
+            # make translation request
             yandex2 = translate_request(lang2, extract2)
             context['yandexurl2'] = yandex2.url
+            # get translated extract
+            translation2 = get_translated_extract(yandex2.json())
+            context['translation2'] = translation2
+        else:
+            translation2 = extract2
+            context['translation2'] = translation2
 
 
 
@@ -185,3 +199,9 @@ def translate_request(lang, text):
     yandex_resp = requests.get(base+post, params=my_atts)
 
     return yandex_resp
+
+def get_translated_extract(data):
+
+    translated_extract = data['text'][0]
+
+    return translated_extract
