@@ -22,15 +22,15 @@ def process(request):
 
     # Using session variables, remove context from return parameters
     if request.method == "POST":
-        request.session["article"] = request.POST["article"]
-        request.session["lang1"] = request.POST["langOne"]
-        request.session["lang2"] = request.POST["langTwo"]
+        article = request.POST["article"]
+        lang1 = request.POST["langOne"]
+        lang2 = request.POST["langTwo"]
 
 
     # Use sessions to transfer between variables
-    article = request.session["article"]
-    lang1 = request.session["lang1"]
-    lang2 = request.session["lang2"]
+    # article = request.session["article"]
+    # lang1 = request.session["lang1"]
+    # lang2 = request.session["lang2"]
 
     title = '{0}'.format(article)  # put the title in single quotes
 
@@ -42,9 +42,9 @@ def process(request):
 
     # make session variables for first article data
     # request.session['articledata'] = data
-    request.session['respURL'] = resp.url  # the url
+    # request.session['respURL'] = resp.url  # the url
     title_two = get_second_language_title(request, lang1, lang2, title)
-    request.session['second'] = title_two
+    # request.session['second'] = title_two
 
     # Get information for second article
     baseurl_two = get_base_url(lang2)
@@ -53,9 +53,9 @@ def process(request):
     pageid_two = validate_pageid(request, data_two)
 
     # make session variables for first article data
-    request.session['respURL2'] = resp_two.url
+    # request.session['respURL2'] = resp_two.url
 
-    return analysis.views.index(request, data, pageid, data_two, pageid_two)
+    return analysis.views.index(request, data, pageid, data_two, pageid_two, lang1, lang2, article)
 
 
 def get_second_language_title(request, lang1, lang2, title):

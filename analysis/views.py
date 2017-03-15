@@ -5,14 +5,14 @@ from django.core.exceptions import ValidationError
 import requests
 # Create your views here.
 
-def index(request, article, thepageid, article_two, thepageid2):
+def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, name):
 
     pages = article['query']['pages']
     pages2 = article_two['query']['pages']
 
     # session variables for language
-    lang1 = request.session["lang1"]
-    lang2 = request.session["lang2"]
+    # lang1 = request.session["lang1"]
+    # lang2 = request.session["lang2"]
 
     # page length
     length = article_length(pages, thepageid)
@@ -37,6 +37,7 @@ def index(request, article, thepageid, article_two, thepageid2):
     extract_exists = check_extract(pages, thepageid, pages2, thepageid2)
 
     context = {
+        "name": name,
         "lang1": lang1,
         "lang2": lang2,
         "length": length,

@@ -89,15 +89,15 @@
 
 							<header>
 								<h2 class="alt">Welcome to the <strong>Cultural Bias in Wikipedia</strong> website<br />
-								 You have selected the article: <strong>{{ request.session.article }}</strong> <br>
-                                    and the languages <strong>{{ request.session.lang1 }}</strong> and <strong>{{ request.session.lang2 }}</strong></h2>
+								 You have selected the article: <strong>{{ name }}</strong> <br>
+                                    and the languages <strong>{{ lang1 }}</strong> and <strong>{{ lang2 }}</strong></h2>
 								<p>Aadam Bari - Final Year Project<br />
 								DT228 BSc in Computer Science (Hons) - 2017 <br>
                                 Supervisor: Dr. Pierpaolo Dondio<br>
                                     Query URL:<br>
-                                    {{ request.session.respURL }}<br>
-                                    {{ request.session.second }}<br>
-                                    {{ request.session.respURL2 }}
+{#                                    {{ request.session.respURL }}<br>#}
+{#                                    {{ request.session.second }}<br>#}
+{#                                    {{ request.session.respURL2 }}#}
                                 </p>
 							</header>
 
@@ -126,7 +126,7 @@
 									<article class="item">
 										<a class="image fit"><img src="{{ image1 }}" alt="this article does not have an image" /></a>
 										<header>
-											<h3>{{ request.session.lang1 }} article</h3>
+											<h3>{{ lang1 }} article</h3>
 										</header>
 									</article>
                                 </div>
@@ -134,7 +134,7 @@
 									<article class="item">
 										<a class="image fit"><img src="{{ image2 }}" alt="this article does not have an image" /></a>
 										<header>
-											<h3>{{ request.session.lang2 }} article</h3>
+											<h3>{{ lang2 }} article</h3>
 										</header>
 									</article>
 								</div>
@@ -152,8 +152,8 @@
 								<h2>Page length</h2>
 							</header>
 
-							<p>{{ request.session.lang1 }}: {{ length }} bytes<br>
-                                {{ request.session.lang2 }}: {{ length2 }} bytes<br>
+							<p>{{ lang1 }}: {{ length }} bytes<br>
+                                {{ lang2 }}: {{ length2 }} bytes<br>
                             </p>
 
                             <div id="canvas-holder" style="width:45%">
@@ -164,7 +164,7 @@
                                 var myLengthChart = new Chart(ctx, {
                                     type: 'horizontalBar',
                                     data: {
-                                        labels: [ "{{ request.session.lang1 }}", "{{ request.session.lang2 }}" ],
+                                        labels: [ "{{ lang1 }}", "{{ lang2 }}" ],
                                         datasets: [{
                                             label: 'Length of Article (Bytes)',
                                             data: [ {{ watchers1 }}, {{ watchers2 }} ],
@@ -263,7 +263,7 @@
                             var myWatchersChart = new Chart(ctx, {
                                 type: 'bar',
                                 data: {
-                                    labels: [ "{{ request.session.lang1 }}", "{{ request.session.lang2 }}" ],
+                                    labels: [ "{{ lang1 }}", "{{ lang2 }}" ],
                                     datasets: [{
                                         label: '# of Watchers',
                                         data: [ {{ watchers1 }}, {{ watchers2 }} ],
@@ -299,7 +299,7 @@
                                 var myLengthChart = new Chart(ctx, {
                                     type: 'horizontalBar',
                                     data: {
-                                        labels: [ "{{ request.session.lang1 }}", "{{ request.session.lang2 }}" ],
+                                        labels: [ "{{ lang1 }}", "{{ lang2 }}" ],
                                         datasets: [{
                                             label: 'Number of watchers relative to the number of users',
                                             data: [ {{ watchers1_relative }}, {{ watchers2_relative }} ],
@@ -328,8 +328,8 @@
                             {% endif %}
 
 
-							<p>There are {{ watchers1 }} watchers in {{ request.session.lang1 }}<br>
-                                There are {{ watchers2 }} watchers in {{ request.session.lang2 }}
+							<p>There are {{ watchers1 }} watchers in {{ lang1 }}<br>
+                                There are {{ watchers2 }} watchers in {{ lang2 }}
                                 {% if watchers_exists is False %}
                                     so the data could not be visualised
                                     <br> (Wikipedia doesn't provide the exact number of watchers under 30)
@@ -362,8 +362,8 @@
 
 						</div>
 
-                        <p>There are {{ lang1_users }} users in {{ request.session.lang1 }}<br>
-                            There are {{ lang2_users }} users in {{ request.session.lang2 }}
+                        <p>There are {{ lang1_users }} users in {{ lang1 }}<br>
+                            There are {{ lang2_users }} users in {{ lang2 }}
 
 
 
