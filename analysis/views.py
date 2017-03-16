@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 import requests
 # Create your views here.
 
-def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, name):
+def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, name, url1, url2):
 
     pages = article['query']['pages']
     pages2 = article_two['query']['pages']
@@ -38,6 +38,8 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
 
     context = {
         "name": name,
+        "respURL": url1,
+        "respURL2": url2,
         "lang1": lang1,
         "lang2": lang2,
         "length": length,
