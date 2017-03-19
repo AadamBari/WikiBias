@@ -1,8 +1,16 @@
 from django.shortcuts import render
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
-# from main.views import get_language_code
 import requests
+from collections import Counter
+import unicodedata
+from stop_words import get_stop_words
+import json
+import string
+from django.utils.safestring import mark_safe
+from django.template import Library
+
+
 # Create your views here.
 
 def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, name, url1, url2):
@@ -78,11 +86,23 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
             # make translation request
             yandex = translate_request(lang1, extract)
             context['yandexurl1'] = yandex.url
+            # return translation
             translation1 = get_translated_extract(yandex.json())
             context['translation1'] = translation1
+            # word bubble list
+            cleaned1 = clean_data(translation1)
+            cloud_list1 = find_most_frequent_words(cleaned1)
+            context['cloud1'] = cloud_list1
+
         else:
+            # return translation
             translation1 = extract
             context['translation1'] = translation1
+            # word bubble list
+            cleaned1 = clean_data(translation1)
+            cloud_list1 = find_most_frequent_words(cleaned1)
+            context['cloud1'] = cloud_list1
+            # context['cloud1'] = mark_safe(json.dumps(cloud_list1))
 
         if lang2 != "English":
             # make translation request
@@ -91,9 +111,20 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
             # get translated extract
             translation2 = get_translated_extract(yandex2.json())
             context['translation2'] = translation2
+            # word bubble list
+            cleaned2 = clean_data(translation2)
+            cloud_list2 = find_most_frequent_words(cleaned2)
+            context['cloud2'] = cloud_list2
         else:
             translation2 = extract2
             context['translation2'] = translation2
+            # word bubble list
+            cleaned2 = clean_data(translation2)
+            cloud_list2 = find_most_frequent_words(cleaned2)
+            context['cloud2'] = cloud_list2
+
+
+
 
 
 
@@ -208,3 +239,40 @@ def get_translated_extract(data):
     translated_extract = data['text'][0]
 
     return translated_extract
+
+def clean_data(text):
+    """ Remove non ascii data ad special characters"""
+
+    stripped = strip_non_ascii(text)
+
+    # filter all characters from the string that are not printable
+    printable = set(string.printable)
+    filter(lambda x: x in printable, stripped)
+
+    # Normalise unicode data
+    unicodedata.normalize('NFKD', stripped).encode('ascii', 'ignore')
+
+    return stripped
+
+def strip_non_ascii(text):
+    """ Returns the string without non ASCII characters """
+    stripped = (c for c in text if 0 < ord(c) < 127)
+    return ''.join(stripped)
+
+def find_most_frequent_words(text):
+    """ find top 20 most frequent characters from text """
+
+    # get rid of stop words
+    filtered = [word for word in text.lower().split() if word not in get_stop_words('en')]
+
+    # top 20 most frequent words
+    new = Counter(filtered).most_common(15)
+
+    # convert list of tuples to list of arrays
+    new = [list(n) for n in new]
+
+    # put number element from lists in single quotes
+    for mylist in new:
+        mylist[1] = str(mylist[1])
+
+    return new

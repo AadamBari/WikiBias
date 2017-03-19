@@ -17,12 +17,15 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'analysis/assets/css/main.css' %}" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
 
                     <!-- Chart.js CDN -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
             <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script> -->
             <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script> -->
             <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script> -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/wordcloud2.js/1.0.6/wordcloud2.js"></script>
 
 	</head>
 	<body>
@@ -34,7 +37,7 @@
 
 					<!-- Logo -->
 						<div id="logo">
-							<span class="image avatar48"><img src="{% static 'analysis/images/avatar.jpg' %}" alt="" /></span>
+							<span class="image avatar48"><img src="{% static 'main/logo1Invert.png' %}" alt="" /></span>
 							<h1 id="title">Analysis</h1>
 							<p>Options</p>
 						</div>
@@ -57,9 +60,9 @@
 							<ul>
 								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
                                 <li><a href="#images" id="images-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Images</span></a></li>
-								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Page Length</span></a></li>
-								<li><a href="#about" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Number of Watchers</span></a></li>
-								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Extract Analysis</span></a></li>
+								<li><a href="#length" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Page Length</span></a></li>
+								<li><a href="#watchers" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Number of Watchers</span></a></li>
+								<li><a href="#extract" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Extract Analysis</span></a></li>
 							</ul>
 						</nav>
 
@@ -101,7 +104,7 @@
 							</header>
 
 							<footer>
-								<a href="#portfolio" class="button scrolly">Show analysis</a>
+								<a href="#length" class="button scrolly">Show analysis</a>
 							</footer>
 
 						</div>
@@ -375,12 +378,75 @@
 							<header>
 								<h2>Content Analysis</h2>
 							</header>
+{#                            {{ yandexurl2 }}<br>#}
+{#                            {{ yandexurl1 }}<br>#}
+{#                            {{ cloud1 }}#}
+{#                            <p>{{ translation1 }}</p><br>#}
+{#                            <p>{{ translation2 }}</p><br>#}
+                            <p>{{ lang1 }} word cloud {% if lang1 != "English"  %}(translated){% endif %}</p>
+                            <div id="canvas-holder" style="width:90%">
+                                <canvas id="canvas_cloud"></canvas>
+                            </div>
 
-							<p>An analysis of the first paragraph from each article</p><br>
-                            {{ yandexurl2 }}<br>
-                            {{ yandexurl1 }}<br>
-                            <p>{{ translation1 }}</p><br>
-                            <p>{{ translation2 }}</p>
+                            {% load js %}
+
+                            <script>
+                                var mylist = {{ cloud1 | js}};
+
+                                var div = document.getElementById("canvas-holder");
+
+                                var canvas = document.getElementById("canvas_cloud");
+
+                                canvas.height = div.offsetHeight;
+
+                                canvas.width  = div.offsetWidth;
+
+                                var options;
+                                options = {
+                                    list: mylist,
+                                    backgroundColor: 'rgba(0, 0, 0, 0)',
+                                    gridSize: Math.round(2 * document.getElementById('canvas_cloud').offsetWidth / 1024),
+                                    weightFactor: function (size) {
+                                        return Math.pow(size, 2) * document.getElementById('canvas_cloud').offsetWidth / 700;
+                                    }
+                                };
+
+                                WordCloud(document.getElementById('canvas_cloud'), options);
+
+                            </script>
+
+{#                            Second language#}
+                            <p>{{ lang2 }} word cloud {% if lang2 != "English"  %}(translated to English){% endif %}</p>
+                            <div id="canvas-holder2" style="width:90%">
+                                <canvas id="canvas_cloud2"></canvas>
+                            </div>
+
+                            {% load js %}
+
+                            <script>
+                                var mylist_two = {{ cloud2 | js}};
+
+                                var div = document.getElementById("canvas-holder2");
+
+                                var canvas = document.getElementById("canvas_cloud2");
+
+                                canvas.height = div.offsetHeight;
+
+                                canvas.width  = div.offsetWidth;
+
+                                var options;
+                                options = {
+                                    list: mylist_two,
+                                    backgroundColor: 'rgba(0, 0, 0, 0)',
+                                    gridSize: Math.round(2 * document.getElementById('canvas_cloud2').offsetWidth / 1024),
+                                    weightFactor: function (size) {
+                                        return Math.pow(size, 2) * document.getElementById('canvas_cloud2').offsetWidth / 700;
+                                    }
+                                };
+
+                                WordCloud(document.getElementById('canvas_cloud2'), options);
+
+                            </script>
 
 
 
