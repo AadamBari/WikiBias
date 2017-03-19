@@ -60,9 +60,9 @@
 							<ul>
 								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
                                 <li><a href="#images" id="images-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Images</span></a></li>
-								<li><a href="#length" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Page Length</span></a></li>
-								<li><a href="#watchers" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Number of Watchers</span></a></li>
-								<li><a href="#extract" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Extract Analysis</span></a></li>
+								<li><a href="#length" id="length-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Page Length</span></a></li>
+								<li><a href="#watchers" id="watchers-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Number of Watchers</span></a></li>
+								<li><a href="#extract" id="extract-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Extract Analysis</span></a></li>
 							</ul>
 						</nav>
 
@@ -104,7 +104,7 @@
 							</header>
 
 							<footer>
-								<a href="#length" class="button scrolly">Show analysis</a>
+								<a href="#images" class="button scrolly">Show analysis</a>
 							</footer>
 
 						</div>
@@ -147,7 +147,7 @@
 
 
 				<!-- Portfolio -->
-					<section id="portfolio" class="two">
+					<section id="length" class="two">
 						<div class="container">
 
 							<header>
@@ -246,7 +246,7 @@
 					</section>
 
 				<!-- Watchers -->
-					<section id="about" class="three">
+					<section id="watchers" class="three">
 						<div class="container">
 
 							<header>
@@ -372,11 +372,10 @@
 					</section>
 
 				<!-- Contact -->
-					<section id="contact" class="four">
+					<section id="extract" class="four">
 						<div class="container">
 
-							<header>
-								<h2>Content Analysis</h2>
+							<header>Popular Words (Word Clouds)</h2>
 							</header>
 {#                            {{ yandexurl2 }}<br>#}
 {#                            {{ yandexurl1 }}<br>#}
@@ -416,7 +415,7 @@
                             </script>
 
 {#                            Second language#}
-                            <p>{{ lang2 }} word cloud {% if lang2 != "English"  %}(translated to English){% endif %}</p>
+                            <p>{{ lang2 }} word cloud {% if lang2 != "English"  %}(after translation to English){% endif %}</p>
                             <div id="canvas-holder2" style="width:90%">
                                 <canvas id="canvas_cloud2"></canvas>
                             </div>
