@@ -162,10 +162,10 @@ def number_check(watcher1, watcher2):
 def get_image_url(pages, pageid):
 
     val = URLValidator()
-    try:
+    if 'thumbnail' in pages[pageid]:
         image_link = pages[pageid]['thumbnail']['source']
         val(image_link)
-    except ValidationError:
+    else:
         image_link = "this article does not have a thumbnail image"
 
     return image_link
