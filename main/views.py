@@ -90,13 +90,17 @@ def info_request(title, baseurl):
     my_atts = {}
 
     my_atts['action'] = 'query'  # action=query
-    my_atts['prop'] = 'info|pageimages|extracts'  # prop=info
+    my_atts['prop'] = 'info|pageimages|extracts|pageviews'  # prop=info
     my_atts['format'] = 'json'  # format=json
     my_atts['titles'] = title  # title=brad+pitt
     my_atts['inprop'] = 'watchers'  # |protection'
     my_atts['pithumbsize'] = '500'  # thumbnail size
     my_atts['exintro'] = '1'  # content before first section
     my_atts['explaintext'] = '1'  # Return extracts as plain text instead of limited HTML.
+    my_atts['pvipdays'] = '14'  # Limits page views to last 14 days
+    my_atts['list'] = 'search'  # performs full search
+    my_atts['srsearch'] = title  # title for search
+    my_atts['srwhat'] = 'nearmatch'
 
     # make request
     resp = requests.get(baseurl, params=my_atts)
