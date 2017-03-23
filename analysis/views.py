@@ -26,6 +26,10 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
     length = article_length(pages, thepageid)
     length2 = article_length(pages2, thepageid2)
 
+    #  wordcount
+    wordcount1 = get_wordcount(article['query'])
+    wordcount2 = get_wordcount(article_two['query'])
+
     # number of watchers
     watchers1 = article_watchers(pages, thepageid)
     watchers2 = article_watchers(pages2, thepageid2)
@@ -52,6 +56,8 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
         "lang2": lang2,
         "length": length,
         "length2": length2,
+        "wordcount1": wordcount1,
+        "wordcount2": wordcount2,
         "watchers1": watchers1,
         "watchers2": watchers2,
         "watchers_exists": watchers_exists,
@@ -276,3 +282,14 @@ def find_most_frequent_words(text):
         mylist[1] = str(mylist[1])
 
     return new
+
+def get_wordcount(data):
+
+    if 'wordcount' in data['search'][0]:
+        wordcount = data['search'][0]['wordcount']
+        print("Word count:", wordcount)
+    else:
+        wordcount = "wordcount could not be retrieved"
+        print(wordcount)
+
+    return wordcount
