@@ -164,7 +164,7 @@
                                 <script>
                                 var ctx = document.getElementById("lengthCanvas");
                                 var myLengthChart = new Chart(ctx, {
-                                    type: 'horizontalBar',
+                                    type: 'bar',
                                     data: {
                                         labels: [ "{{ lang1 }}", "{{ lang2 }}" ],
                                         datasets: [{
@@ -253,6 +253,15 @@
 								<h2>Number of watchers</h2>
 							</header>
 
+                            <p>There are {{ watchers1 }} watchers in {{ lang1 }}<br>
+                                There are {{ watchers2 }} watchers in {{ lang2 }}
+                                {% if watchers_exists is False %}
+                                    so the data could not be visualised
+                                    <br> (Wikipedia doesn't provide the exact number of watchers under 30)
+                                {% endif %}
+                                <br>
+                            </p>
+
 {#							<a href="#" class="image fit"><img src="{% static 'analysis/images/pic08.jpg' %}" alt="" /></a>#}
                             {% if watchers_exists %}
 
@@ -263,11 +272,11 @@
                             <script>
                             var ctx = document.getElementById("watchersCanvas");
                             var myWatchersChart = new Chart(ctx, {
-                                type: 'bar',
+                                type: 'horizontalBar',
                                 data: {
                                     labels: [ "{{ lang1 }}", "{{ lang2 }}" ],
                                     datasets: [{
-                                        label: '# of Watchers',
+                                        label: 'Number of Watchers',
                                         data: [ {{ watchers1 }}, {{ watchers2 }} ],
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 0.2)',
@@ -329,15 +338,8 @@
                                 </script>
                             {% endif %}
 
-
-							<p>There are {{ watchers1 }} watchers in {{ lang1 }}<br>
-                                There are {{ watchers2 }} watchers in {{ lang2 }}
-                                {% if watchers_exists is False %}
-                                    so the data could not be visualised
-                                    <br> (Wikipedia doesn't provide the exact number of watchers under 30)
-                                {% endif %}
-                                <br>
-                            </p>
+                            <p>There are a total of {{ lang1_users }} users in {{ lang1 }}<br>
+                            There are a total of {{ lang2_users }} users in {{ lang2 }}<br></p>
 
 
 {#                                  Number of wikipedia users per languahe#}
@@ -363,9 +365,6 @@
                                 </script>
 
 						</div>
-
-                        <p>There are {{ lang1_users }} users in {{ lang1 }}<br>
-                            There are {{ lang2_users }} users in {{ lang2 }}
 
 
 
