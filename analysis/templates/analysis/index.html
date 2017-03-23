@@ -154,8 +154,8 @@
 								<h2>Page length</h2>
 							</header>
 
-							<p>{{ lang1 }}: {{ length }} bytes<br>
-                                {{ lang2 }}: {{ length2 }} bytes<br>
+							<p>{{ lang1 }}: {{ length }} bytes | {{ wordcount1 }} words<br>
+                                {{ lang2 }}: {{ length2 }} bytes | {{ wordcount2 }} words<br>
                             </p>
 
                             <div id="canvas-holder" style="width:45%">
@@ -166,16 +166,20 @@
                                 var myLengthChart = new Chart(ctx, {
                                     type: 'bar',
                                     data: {
-                                        labels: [ "{{ lang1 }}", "{{ lang2 }}" ],
+                                        labels: [ "{{ lang1 }} (bytes)", "{{ lang1 }} (words)", "{{ lang2 }} (bytes)", "{{ lang2 }} (words)" ],
                                         datasets: [{
                                             label: 'Length of Article (Bytes)',
-                                            data: [ {{ length }}, {{ length2 }} ],
+                                            data: [ {{ length }}, {{ wordcount1 }}, {{ length2 }}, {{ wordcount2 }} ],
                                             backgroundColor: [
                                                 'rgba(255, 99, 132, 0.2)',
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
                                                 'rgba(54, 162, 235, 0.2)'
                                             ],
                                             borderColor: [
                                                 'rgba(255,99,132,1)',
+                                                'rgba(255,99,132,1)',
+                                                'rgba(54, 162, 235, 1)',
                                                 'rgba(54, 162, 235, 1)'
                                             ],
                                             borderWidth: 1
