@@ -101,7 +101,8 @@
                                 Supervisor: Dr. Pierpaolo Dondio<br>
                                     Query URL:<br>
                                     {{ respURL }}<br>
-                                    {{ respURL2 }}
+                                    {{ respURL2 }}<br>
+                                    {{ request.session.langlink }}
                                 </p>
 							</header>
 
@@ -478,7 +479,7 @@
                                 data: {
                                     labels: {{ dates1 | js }},
                                     datasets: [{
-                                        label: 'Number of Watchers',
+                                        label: 'Page views for last 14 days',
                                         data: {{ hits1 | js }},
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 0.2)',
