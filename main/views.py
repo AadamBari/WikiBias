@@ -1,5 +1,6 @@
 import requests
 from django.shortcuts import render
+from django.http import Http404
 
 import analysis.views
 from analysis.models import Language
@@ -63,6 +64,7 @@ def get_second_language_title(request, lang1, lang2, title):
 
     base = get_base_url(lang1)
     resp = link_request(title, base, lang2)
+    request.session['langlink'] = resp.url
     data = resp.json()
     pageid = validate_pageid(request, data)
 
@@ -128,6 +130,7 @@ def link_request(title, baseurl, lang):
     # make request
     resp = requests.get(baseurl, params=my_atts)
 
+
     # return response
     return resp
 
@@ -135,17 +138,15 @@ def validate_pageid(request, data):
     """ check to see if a page id exists within the page, if so return pageid from api json """
     pages = data['query']['pages']
 
-
     # i.e. checking if page exists and assigning page id
-    try:
-        for id in pages:
-            pageidnum = pages[id]['pageid']  # holds numeric page id value]
-            if pageidnum:
-                break
-    except (ValueError, NameError, TypeError, KeyError):
-        # Key is not present
-        return render(request, 'main/failure.html')
-        # exit()
+    for key in pages:
+        print("the yoke:", int(key))
+        if key and int(key) > 1:
+            pageidnum = pages[key]['pageid']  # holds numeric page id value]
+        else:
+            raise Http404("Article you have chosen does not exist in the selected language(s)."
+                          "Please check your spelling")
+
 
     if isinstance(pageidnum, int):
         pass
