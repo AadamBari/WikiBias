@@ -48,6 +48,9 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
     # Check to see if extract data exists and assign boolean to variable
     extract_exists = check_extract(pages, thepageid, pages2, thepageid2)
 
+    # page views
+    dates1, hits1 = get_page_views_info(pages, thepageid)
+
     context = {
         "name": name,
         "respURL": url1,
@@ -67,6 +70,8 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
         "lang2_users": lang2_users,
         # "other_users": other_users,
         "extract_exists": extract_exists,
+        "dates1": dates1,
+        "hits1": hits1,
     }
 
     if watchers_exists:
@@ -293,3 +298,27 @@ def get_wordcount(data):
         print(wordcount)
 
     return wordcount
+
+def get_page_views_info(data, pageid):
+
+    pageviews = data[pageid]['pageviews']
+    labels = []  # list for date values
+    values = []  # list for date values
+
+    # print(pageviews)
+
+    # rappend dates to list
+    for date in pageviews:
+        labels.append(date)
+
+    # sort list of dates into ascending order
+    labels.sort()
+
+    for date in labels:
+        # Get number of views for corresponding date
+        values.append(pageviews[date])
+
+    print(labels)
+    print(values)
+
+    return labels, values
