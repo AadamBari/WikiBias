@@ -462,11 +462,46 @@
 							<header>
 								<h2>Page Views</h2>
 							</header>
-                            <p>Visualise Here
-                                <br>{{ dates1 }}<br>{{ hits1 }}
-                            </p>
+{#                            <p>Visualise Here#}
+{#                                <br>{{ dates1 }}<br>{{ hits1 }}#}
+{#                            </p>#}
 
 
+
+                            <div id="canvas-holder" style="width:45%">
+                                <canvas id="viewsCanvas"></canvas>
+                            </div>
+                            <script>
+                            var ctx = document.getElementById("viewsCanvas");
+                            var myViewsChart = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: {{ dates1 | js }},
+                                    datasets: [{
+                                        label: 'Number of Watchers',
+                                        data: {{ hits1 | js }},
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255,99,132,1)',
+                                            'rgba(54, 162, 235, 1)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }]
+                                    }
+                                }
+                            });
+                            </script>
 
 
 
