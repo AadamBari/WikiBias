@@ -389,7 +389,7 @@
 {#                            <p>{{ translation1 }}</p><br>#}
 {#                            <p>{{ translation2 }}</p><br>#}
                             <p>{{ lang1 }} word cloud {% if lang1 != "English"  %}(translated){% endif %}</p>
-                            <div id="canvas-holder" style="width:90%">
+                            <div id="canvas-holder" style="width:95%">
                                 <canvas id="canvas_cloud"></canvas>
                             </div>
 
@@ -422,7 +422,7 @@
 
 {#                            Second language#}
                             <p>{{ lang2 }} word cloud {% if lang2 != "English"  %}(after translation to English){% endif %}</p>
-                            <div id="canvas-holder2" style="width:90%">
+                            <div id="canvas-holder2" style="width:95%">
                                 <canvas id="canvas_cloud2"></canvas>
                             </div>
 
@@ -469,7 +469,7 @@
 
 
 
-                            <div id="canvas-holder" style="width:45%">
+                            <div id="canvas-holder" style="width:60%">
                                 <canvas id="viewsCanvas"></canvas>
                             </div>
                             <script>
@@ -479,14 +479,23 @@
                                 data: {
                                     labels: {{ dates1 | js }},
                                     datasets: [{
-                                        label: 'Page views for last 14 days',
+                                        label: 'Page views for last 14 days {{ lang1 }}',
                                         data: {{ hits1 | js }},
                                         backgroundColor: [
-                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(255, 99, 132, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255,99,132,1)'
+                                        ],
+                                        borderWidth: 1
+                                    },
+                                        {
+                                        label: 'Page views for last 14 days {{ lang2 }}',
+                                        data: {{ hits2 | js }},
+                                        backgroundColor: [
                                             'rgba(54, 162, 235, 0.2)'
                                         ],
                                         borderColor: [
-                                            'rgba(255,99,132,1)',
                                             'rgba(54, 162, 235, 1)'
                                         ],
                                         borderWidth: 1

@@ -50,6 +50,8 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
 
     # page views
     dates1, hits1 = get_page_views_info(pages, thepageid)
+    dates2, hits2 = get_page_views_info(pages2, thepageid2)
+
 
     context = {
         "name": name,
@@ -72,6 +74,8 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
         "extract_exists": extract_exists,
         "dates1": dates1,
         "hits1": hits1,
+        "dates2": dates2,
+        "hits2": hits2,
     }
 
     if watchers_exists:
