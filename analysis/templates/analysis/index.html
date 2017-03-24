@@ -422,7 +422,7 @@
 
 
 
-                            <div id="canvas-holder" style="width:60%">
+                            <div id="canvas-holder" style="width:70%">
                                 <canvas id="viewsCanvas"></canvas>
                             </div>
                             <script>
@@ -432,7 +432,7 @@
                                 data: {
                                     labels: {{ dates1 | js }},
                                     datasets: [{
-                                        label: 'Page views for last 14 days {{ lang1 }}',
+                                        label: 'Page views for last {{ dates1 | length }} days {{ lang1 }}',
                                         data: {{ hits1 | js }},
                                         backgroundColor: [
                                             'rgba(255, 99, 132, 0.2)'
@@ -443,7 +443,7 @@
                                         borderWidth: 1
                                     },
                                         {
-                                        label: 'Page views for last 14 days {{ lang2 }}',
+                                        label: 'Page views for last {{ dates1 | length }} days {{ lang2 }}',
                                         data: {{ hits2 | js }},
                                         backgroundColor: [
                                             'rgba(54, 162, 235, 0.2)'

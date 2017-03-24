@@ -99,7 +99,7 @@ def info_request(title, baseurl):
     my_atts['pithumbsize'] = '500'  # thumbnail size
     my_atts['exintro'] = '1'  # content before first section
     my_atts['explaintext'] = '1'  # Return extracts as plain text instead of limited HTML.
-    my_atts['pvipdays'] = '14'  # Limits page views to last 14 days
+    my_atts['pvipdays'] = '30'  # Limits page views to last 14 days
     my_atts['list'] = 'search'  # performs full search
     my_atts['srsearch'] = title  # title for search
     my_atts['srwhat'] = 'nearmatch'
