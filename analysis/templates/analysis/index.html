@@ -59,11 +59,13 @@
 							-->
 							<ul>
 								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
-                                <li><a href="#images" id="images-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Images</span></a></li>
+                                <li><a href="#images" id="images-link" class="skel-layers-ignoreHref"><span class="icon fa-paint-brush">Images</span></a></li>
 								<li><a href="#length" id="length-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Page Length</span></a></li>
 								<li><a href="#watchers" id="watchers-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Number of Watchers</span></a></li>
-								<li><a href="#extract" id="extract-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Extract Analysis</span></a></li>
-                                <li><a href="#views" id="views-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Page Views</span></a></li>
+								<li><a href="#extract" id="extract-link" class="skel-layers-ignoreHref"><span class="icon fa-tasks">Extract Analysis</span></a></li>
+                                <li><a href="#views" id="views-link" class="skel-layers-ignoreHref"><span class="icon fa-calendar-times-o">Page Views</span></a></li>
+                                <li><a href="#sentiment" id="sent-link" class="skel-layers-ignoreHref"><span class="icon fa-smile-o">Sentiment</span></a></li>
+                                <li><a href="#conclusion" id="conc-link" class="skel-layers-ignoreHref"><span class="icon fa-hourglass-end">Summary</span></a></li>
 
 							</ul>
 						</nav>
@@ -201,54 +203,6 @@
                                 </script>
 
 
-
-{#							<div class="row">#}
-{#								<div class="4u 12u$(mobile)">#}
-{#									<article class="item">#}
-{#										<a href="#" class="image fit"><img src="{% static 'analysis/images/pic02.jpg' %}" alt="" /></a>#}
-{#										<header>#}
-{#											<h3>Ipsum Feugiat</h3>#}
-{#										</header>#}
-{#									</article>#}
-{#									<article class="item">#}
-{#										<a href="#" class="image fit"><img src="{% static 'analysis/images/pic03.jpg' %}" alt="" /></a>#}
-{#										<header>#}
-{#											<h3>Rhoncus Semper</h3>#}
-{#										</header>#}
-{#									</article>#}
-{#								</div>#}
-{#								<div class="4u 12u$(mobile)">#}
-{#									<article class="item">#}
-{#										<a href="#" class="image fit"><img src="{% static 'analysis/images/pic04.jpg' %}" alt="" /></a>#}
-{#										<header>#}
-{#											<h3>Magna Nullam</h3>#}
-{#										</header>#}
-{#									</article>#}
-{#									<article class="item">#}
-{#										<a href="#" class="image fit"><img src="{% static 'analysis/images/pic05.jpg' %}" alt="" /></a>#}
-{#										<header>#}
-{#											<h3>Natoque Vitae</h3>#}
-{#										</header>#}
-{#									</article>#}
-{#								</div>#}
-{#								<div class="4u$ 12u$(mobile)">#}
-{#									<article class="item">#}
-{#										<a href="#" class="image fit"><img src="{% static 'analysis/images/pic06.jpg' %}" alt="" /></a>#}
-{#										<header>#}
-{#											<h3>Dolor Penatibus</h3>#}
-{#										</header>#}
-{#									</article>#}
-{#									<article class="item">#}
-{#										<a href="#" class="image fit"><img src="{% static 'analysis/images/pic08.jpg' %}" alt="" /></a>#}
-{#										<header>#}
-{#											<h3>Orci Convallis</h3>#}
-{#										</header>#}
-{#									</article>#}
-{#								</div>#}
-{#							</div>#}
-{##}
-
-
                         </div>
 					</section>
 
@@ -381,8 +335,7 @@
 					<section id="extract" class="four">
 						<div class="container">
 
-							<header>Popular Words (Word Clouds)</h2>
-							</header>
+                            <header><h2>Word Clouds</h2></header>
 {#                            {{ yandexurl2 }}<br>#}
 {#                            {{ yandexurl1 }}<br>#}
 {#                            {{ cloud1 }}#}
@@ -518,9 +471,29 @@
 						</div>
 					</section>
 
+                <!-- Sentiment -->
+					<section id="sentiment" class="four">
+						<div class="container">
 
+							<header>
+								<h2>Sentiment</h2>
+							</header>
+                            <p>entiment in first paragraph</p>
 
+						</div>
+					</section>
 
+                <!-- Conclusion -->
+					<section id="conclusion" class="four">
+						<div class="container">
+
+							<header>
+								<h2>Summary</h2>
+							</header>
+                            <p>The facts are here</p>
+
+						</div>
+					</section>
 
 
 
