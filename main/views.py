@@ -54,7 +54,7 @@ def process(request):
     pageid_two = validate_pageid(request, data_two)
 
     # make session variables for first article data
-    request.session['respURL2'] = resp_two.url
+    # request.session['respURL2'] = resp_two.url
 
     return analysis.views.index(request, data, pageid, data_two, pageid_two, lang1, lang2, article, resp.url, resp_two.url)
 
@@ -64,7 +64,7 @@ def get_second_language_title(request, lang1, lang2, title):
 
     base = get_base_url(lang1)
     resp = link_request(title, base, lang2)
-    request.session['langlink'] = resp.url
+    # request.session['langlink'] = resp.url
     data = resp.json()
     pageid = validate_pageid(request, data)
 
