@@ -53,6 +53,7 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
     dates2, hits2 = get_page_views_info(pages2, thepageid2)
 
 
+
     context = {
         "name": name,
         "respURL": url1,
@@ -76,6 +77,7 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
         "hits1": hits1,
         "dates2": dates2,
         "hits2": hits2,
+        "title": get_article_title(pages, thepageid),
     }
 
     if watchers_exists:
@@ -220,11 +222,12 @@ def get_extract(pages, pageid):
     return extract
 
 def get_api_key():
+    """ returns api key to be used in yandex api request """
 
     return "trnsl.1.1.20170314T183113Z.4a6fc904e7ea1bc5.23809eb4e1d1c082364cb9e075cae6be489b7ba9"
 
 def translate_request(lang, text):
-    """ Make request to yandex api and return data """
+    """ Make request to yandex api and return response"""
     api_key = get_api_key()
 
     mycode = {'English': 'en', 'French': 'fr', 'Italian': 'it', 'German': 'de', 'Spanish': 'es', 'Swedish': 'sv',
@@ -250,6 +253,7 @@ def translate_request(lang, text):
     return yandex_resp
 
 def get_translated_extract(data):
+    """ parse yandex api response and extract translation """
 
     translated_extract = data['text'][0]
 
@@ -293,6 +297,7 @@ def find_most_frequent_words(text):
     return new
 
 def get_wordcount(data):
+    """ parse data and return wordcount for article """
 
     if 'wordcount' in data['search'][0]:
         wordcount = data['search'][0]['wordcount']
@@ -304,6 +309,7 @@ def get_wordcount(data):
     return wordcount
 
 def get_page_views_info(data, pageid):
+    """ get pageviews for article """
 
     pageviews = data[pageid]['pageviews']
     labels = []  # list for date values
@@ -326,3 +332,8 @@ def get_page_views_info(data, pageid):
     print(values)
 
     return labels, values
+
+def get_article_title(data, pageid):
+    """ parse data and extract article title """
+
+    return data[pageid]['title']
