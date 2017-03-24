@@ -490,7 +490,41 @@
 							<header>
 								<h2>Summary</h2>
 							</header>
-                            <p>The facts are here</p>
+                            <p>
+                                {% if watchers1 > watchers2 %}
+                                    There are more watchers in {{ lang1 }} ({{ watchers1 }})
+                                    than in {{ lang2 }} ({{ watchers2 }}).
+
+                                    {% elif watchers2 > watchers1%}
+                                        There are more watchers in {{ lang2 }} ({{ watchers2 }})
+                                    than in {{ lang1 }} ({{ watchers1 }}).
+
+                                {% endif %}
+                            <br>
+
+                            {% if watchers1_relative > watchers2_relative %}
+                                Relative to the total number of users per language
+                                ({{ lang1_users }} in {{ lang1 }} and {{ lang2_users }} in {{ lang2 }}),
+                                there are more watchers in {{ lang1 }} than in {{ lang2 }}.
+
+                                {% elif watchers2_relative > watchers1_relative %}
+                                Relative to the total number of users per language
+                                ({{ lang1_users }} in {{ lang1 }} and {{ lang2_users }} in {{ lang2 }}),
+                                there are more watchers in {{ lang2 }} than in {{ lang1 }}.
+
+                            {% endif %}
+
+                            <br>
+                            {% if length > length2 %}
+                                The {{ lang1 }} article is longer than the {{ lang2 }} in terms of bytes
+                                {% if wordcount1 > wordcount2 %}and in terms of words{% endif %}.
+                                {% elif length2 > length %}
+                                The {{ lang2 }} article is longer than the {{ lang1 }} in terms of bytes
+                                {% if wordcount2 > wordcount1 %}and in terms of words{% endif %}.
+
+                            {% endif %}
+
+                            </p>
 
 						</div>
 					</section>
