@@ -168,6 +168,10 @@ def article_watchers(pages, pageid):
     return watchers
 
 def number_check(watcher1, watcher2):
+    """
+    Checks to see if watchers variables holds integer.
+    If less than 30 watchers, wikipedia api does not return integer
+    """
 
     if (isinstance(watcher1, int)) and (isinstance(watcher2, int)):
         is_number = True
@@ -178,6 +182,9 @@ def number_check(watcher1, watcher2):
     return is_number
 
 def get_image_url(pages, pageid):
+    """
+     Parse data and return image url
+    """
 
     val = URLValidator()
     if 'thumbnail' in pages[pageid]:

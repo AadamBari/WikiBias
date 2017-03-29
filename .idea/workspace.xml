@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35214c5e-055a-49b3-8b01-d72728260ddf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/analysis/sentiment.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/views.py" afterPath="$PROJECT_DIR$/analysis/views.py" />
     </list>
@@ -76,11 +75,11 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/analysis/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="145" column="48" lean-forward="true" selection-start-line="145" selection-start-column="48" selection-end-line="145" selection-end-column="48" />
+            <state relative-caret-position="-4080">
+              <caret line="19" column="42" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1490815357705" expanded="true" signature="9697:9723" ph="..." />
+                <marker date="1490816884682" expanded="true" signature="9889:9915" ph="..." />
               </folding>
             </state>
           </provider>
@@ -1073,7 +1072,7 @@
         <state relative-caret-position="85">
           <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1269,7 +1268,7 @@
         <state relative-caret-position="51">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1407,11 +1406,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analysis/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="145" column="48" lean-forward="true" selection-start-line="145" selection-start-column="48" selection-end-line="145" selection-end-column="48" />
+        <state relative-caret-position="-4080">
+          <caret line="19" column="42" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <marker date="1490815357705" expanded="true" signature="9697:9723" ph="..." />
+            <marker date="1490816884682" expanded="true" signature="9889:9915" ph="..." />
           </folding>
         </state>
       </provider>
