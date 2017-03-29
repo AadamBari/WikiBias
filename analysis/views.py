@@ -9,6 +9,7 @@ import json
 import string
 from django.utils.safestring import mark_safe
 from django.template import Library
+from .sentiment import *
 
 
 # Create your views here.
@@ -141,8 +142,8 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
             context['cloud2'] = cloud_list2
 
 
-
-
+    if extract_exists:
+        demo_liu_hu_lexicon(extract, plot=False)
 
 
 
