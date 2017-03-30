@@ -1,9 +1,10 @@
 import requests
-from django.shortcuts import render
 from django.http import Http404
+from django.shortcuts import render
 
 import analysis.views
 from analysis.models import Language
+
 
 # Create your views here.
 # Views methods must return html response
