@@ -299,6 +299,7 @@
                                 </script>
                             {% endif %}
 
+                            <br>
                             <p>There are a total of {{ lang1_users }} users in {{ lang1 }}<br>
                             There are a total of {{ lang2_users }} users in {{ lang2 }}<br></p>
 
@@ -478,7 +479,7 @@
 							<header>
 								<h2>Sentiment</h2>
 							</header>
-                            <p>Sentiment in first paragraph</p>
+                            <p>Sentiment words in first paragraph</p>
 
                             <div id="canvas-holder" style="width:45%">
                                 <canvas id="sentimentCanvas"></canvas>
@@ -505,7 +506,7 @@
                                         },
                                             {
                                             label: '{{ lang2 }} Sentiment',
-                                            data: [{{ negWords }}, {{ negWords2 }}],
+                                            data: [{{ posWords2 }}, {{ negWords2 }}],
                                             backgroundColor: [
                                                 'rgba(54, 162, 235, 0.2)',
                                                 'rgba(54, 162, 235, 0.2)'
@@ -529,6 +530,60 @@
                                     }
                                 });
                                 </script>
+
+                            <br>
+                            <p>Sentiment words relative to the total number of words in the first paragraph</p>
+
+                            <div id="canvas-holder" style="width:45%">
+                                <canvas id="sentimentRelativeCanvas"></canvas>
+                            </div>
+                                <script>
+                                var ctx = document.getElementById("sentimentRelativeCanvas");
+                                var mySentRelChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: [ "Positive Words", "Negative Words"],
+                                        datasets: [
+                                            {
+                                            label: '{{ lang1 }} Sentiment',
+                                            data: [{{ posRel1 }}, {{ negRel1 }}],
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(255, 99, 132, 0.2)'
+                                            ],
+                                            borderColor: [
+                                                'rgba(255,99,132,1)',
+                                                'rgba(255,99,132,1)'
+                                            ],
+                                            borderWidth: 1
+                                        },
+                                            {
+                                            label: '{{ lang2 }} Sentiment',
+                                            data: [{{ negRel2 }}, {{ negRel2 }}],
+                                            backgroundColor: [
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)'
+                                            ],
+                                            borderColor: [
+                                                'rgba(54, 162, 235, 1)',
+                                                'rgba(54, 162, 235, 1)'
+                                            ],
+                                            borderWidth: 1
+
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero:true
+                                                }
+                                            }]
+                                        }
+                                    }
+                                });
+                                </script>
+
 
 
 						</div>

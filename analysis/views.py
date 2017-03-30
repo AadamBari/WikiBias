@@ -159,6 +159,15 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
         # update context dictionary
         context.update({"posWords": pos_words, "posWords2": pos_words2, "negWords": neg_words, "negWords2": neg_words2})
 
+        pos_rel = percentage(pos_words, extract_count1)
+        neg_rel = percentage(neg_words, extract_count1)
+
+        pos_rel2 = percentage(pos_words2, extract_count2)
+        neg_rel2 = percentage(neg_words2, extract_count2)
+
+        context.update({"posRel1": pos_rel, "negRel1": neg_rel, "posRel2": pos_rel2, "negRel2": neg_rel2})
+
+
 
 
     return render(request, 'analysis/index.html', context)

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="35214c5e-055a-49b3-8b01-d72728260ddf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/templates/analysis/index.html" afterPath="$PROJECT_DIR$/analysis/templates/analysis/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/views.py" afterPath="$PROJECT_DIR$/analysis/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,7 +31,7 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WikiBias/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="425">
               <caret line="25" column="39" lean-forward="false" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
               <folding>
                 <element signature="e#642#683#0" expanded="true" />
@@ -74,11 +75,11 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analysis/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="159" column="120" lean-forward="false" selection-start-line="159" selection-start-column="120" selection-end-line="159" selection-end-column="120" />
+            <state relative-caret-position="350">
+              <caret line="159" column="120" lean-forward="true" selection-start-line="159" selection-start-column="120" selection-end-line="159" selection-end-column="120" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1490886283285" expanded="true" signature="10515:10541" ph="..." />
+                <marker date="1490892595756" expanded="true" signature="10854:10880" ph="..." />
               </folding>
             </state>
           </provider>
@@ -106,19 +107,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/analysis/templates/analysis/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="494" column="81" lean-forward="false" selection-start-line="494" selection-start-column="81" selection-end-line="494" selection-end-column="81" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#section#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#section#6;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="font-awesome.min.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/analysis/assets/css/font-awesome.min.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -135,6 +123,19 @@
             <state relative-caret-position="29138">
               <caret line="1714" column="27" lean-forward="false" selection-start-line="1714" selection-start-column="19" selection-end-line="1714" selection-end-column="27" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/analysis/templates/analysis/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-337">
+              <caret line="378" column="60" lean-forward="true" selection-start-line="378" selection-start-column="60" selection-end-line="378" selection-end-column="60" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#section#4;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#section#6;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1327,7 +1328,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WikiBias/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
+        <state relative-caret-position="425">
           <caret line="25" column="39" lean-forward="false" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
           <folding>
             <element signature="e#642#683#0" expanded="true" />
@@ -1397,22 +1398,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analysis/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="159" column="120" lean-forward="false" selection-start-line="159" selection-start-column="120" selection-end-line="159" selection-end-column="120" />
+        <state relative-caret-position="350">
+          <caret line="159" column="120" lean-forward="true" selection-start-line="159" selection-start-column="120" selection-end-line="159" selection-end-column="120" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1490886283285" expanded="true" signature="10515:10541" ph="..." />
+            <marker date="1490892595756" expanded="true" signature="10854:10880" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/analysis/templates/analysis/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="494" column="81" lean-forward="false" selection-start-line="494" selection-start-column="81" selection-end-line="494" selection-end-column="81" />
+        <state relative-caret-position="-337">
+          <caret line="378" column="60" lean-forward="true" selection-start-line="378" selection-start-column="60" selection-end-line="378" selection-end-column="60" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#section#5;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#section#6;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#section#4;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#section#6;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
