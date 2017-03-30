@@ -273,7 +273,7 @@
                                     data: {
                                         labels: [ "{{ lang1 }}", "{{ lang2 }}" ],
                                         datasets: [{
-                                            label: 'Number of watchers relative to the number of users',
+                                            label: 'Number of watchers relative to the number of users (%)',
                                             data: [ {{ watchers1_relative }}, {{ watchers2_relative }} ],
                                             backgroundColor: [
                                                 'rgba(255, 99, 132, 0.2)',
@@ -532,7 +532,10 @@
                                 </script>
 
                             <br>
-                            <p>Sentiment words relative to the total number of words in the first paragraph</p>
+                            <p>Sentiment words relative to the total number of words in the first paragraph<br>
+                                Total number words in {{ lang1 }} {% if lang1 != "English"  %}(after translation){% endif %}: {{ extractCount }} <br>
+                                Total number words in {{ lang2 }} {% if lang2 != "English"  %}(after translation){% endif %}: {{ extractCount2 }} <br>
+                            </p>
 
                             <div id="canvas-holder" style="width:45%">
                                 <canvas id="sentimentRelativeCanvas"></canvas>
@@ -542,7 +545,7 @@
                                 var mySentRelChart = new Chart(ctx, {
                                     type: 'bar',
                                     data: {
-                                        labels: [ "Positive Words", "Negative Words"],
+                                        labels: [ "Positive Words (%)", "Negative Words (%)"],
                                         datasets: [
                                             {
                                             label: '{{ lang1 }} Sentiment',

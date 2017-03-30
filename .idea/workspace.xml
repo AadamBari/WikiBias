@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="35214c5e-055a-49b3-8b01-d72728260ddf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/templates/analysis/index.html" afterPath="$PROJECT_DIR$/analysis/templates/analysis/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/views.py" afterPath="$PROJECT_DIR$/analysis/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -130,8 +129,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/analysis/templates/analysis/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-337">
-              <caret line="378" column="60" lean-forward="true" selection-start-line="378" selection-start-column="60" selection-end-line="378" selection-end-column="60" />
+            <state relative-caret-position="461">
+              <caret line="536" column="150" lean-forward="false" selection-start-line="536" selection-start-column="150" selection-end-line="536" selection-end-column="150" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#section#4;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#section#6;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -935,7 +934,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14765458" sideWeight="0.496208" order="0" side_tool="false" content_ui="combo" />
@@ -1409,8 +1408,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/analysis/templates/analysis/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
-          <caret line="378" column="60" lean-forward="true" selection-start-line="378" selection-start-column="60" selection-end-line="378" selection-end-column="60" />
+        <state relative-caret-position="461">
+          <caret line="536" column="150" lean-forward="false" selection-start-line="536" selection-start-column="150" selection-end-line="536" selection-end-column="150" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#section#4;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#section#6;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
