@@ -1,14 +1,16 @@
-from django.shortcuts import render
-from django.core.validators import URLValidator
-from django.core.exceptions import ValidationError
-import requests
-from collections import Counter
-import unicodedata
-from stop_words import get_stop_words
 import json
 import string
-from django.utils.safestring import mark_safe
+import unicodedata
+from collections import Counter
+
+import requests
+from django.core.exceptions import ValidationError
+from django.core.validators import URLValidator
+from django.shortcuts import render
 from django.template import Library
+from django.utils.safestring import mark_safe
+from stop_words import get_stop_words
+
 from .sentiment import *
 
 

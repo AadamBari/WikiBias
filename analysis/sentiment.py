@@ -44,15 +44,3 @@ def demo_liu_hu_lexicon(sentence, plot=False):
         # if plot == True:
         #     _show_plot(x, y, x_labels=tokenized_sent, y_labels=['Negative', 'Neutral', 'Positive'])
 
-
-def demo_vader_instance(text):
-    """
-    Output polarity scores for a text using Vader approach.
-
-    :param text: a text whose polarity has to be evaluated.
-    """
-    from nltk.sentiment import SentimentIntensityAnalyzer
-    vader_analyzer = SentimentIntensityAnalyzer()
-    print(vader_analyzer.polarity_scores(text))
-
-
