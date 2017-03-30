@@ -478,7 +478,58 @@
 							<header>
 								<h2>Sentiment</h2>
 							</header>
-                            <p>entiment in first paragraph</p>
+                            <p>Sentiment in first paragraph</p>
+
+                            <div id="canvas-holder" style="width:45%">
+                                <canvas id="sentimentCanvas"></canvas>
+                            </div>
+                                <script>
+                                var ctx = document.getElementById("sentimentCanvas");
+                                var mySentChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: [ "Positive Words", "Negative Words"],
+                                        datasets: [
+                                            {
+                                            label: '{{ lang1 }} Sentiment',
+                                            data: [{{ posWords }}, {{ negWords }}],
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(255, 99, 132, 0.2)'
+                                            ],
+                                            borderColor: [
+                                                'rgba(255,99,132,1)',
+                                                'rgba(255,99,132,1)'
+                                            ],
+                                            borderWidth: 1
+                                        },
+                                            {
+                                            label: '{{ lang2 }} Sentiment',
+                                            data: [{{ negWords }}, {{ negWords2 }}],
+                                            backgroundColor: [
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)'
+                                            ],
+                                            borderColor: [
+                                                'rgba(54, 162, 235, 1)',
+                                                'rgba(54, 162, 235, 1)'
+                                            ],
+                                            borderWidth: 1
+
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero:true
+                                                }
+                                            }]
+                                        }
+                                    }
+                                });
+                                </script>
+
 
 						</div>
 					</section>
