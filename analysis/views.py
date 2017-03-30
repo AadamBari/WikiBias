@@ -143,9 +143,21 @@ def index(request, article, thepageid, article_two, thepageid2, lang1, lang2, na
             cloud_list2 = find_most_frequent_words(cleaned2)
             context['cloud2'] = cloud_list2
 
+    if extract_exists:
+        # calculate number of words in text
+        extract_count1 = calculate_wordcount(cleaned1)
+        extract_count2 = calculate_wordcount(cleaned2)
+        # update context dictionary
+        context.update({'extractCount': extract_count1, 'extractCount2': extract_count2})
+
+
 
     if extract_exists:
-        demo_liu_hu_lexicon(extract, plot=False)
+        # return number of positive and negative words in text
+        pos_words, neg_words = demo_liu_hu_lexicon(cleaned1, plot=False)
+        pos_words2, neg_words2 = demo_liu_hu_lexicon(cleaned2, plot=False)
+        # update context dictionary
+        context.update({"posWords": pos_words, "posWords2": pos_words2, "negWords": neg_words, "negWords2": neg_words2})
 
 
 
@@ -338,8 +350,8 @@ def get_page_views_info(data, pageid):
         # Get number of views for corresponding date
         values.append(pageviews[date])
 
-    print(labels)
-    print(values)
+    # print(labels)
+    # print(values)
 
     return labels, values
 
@@ -347,3 +359,13 @@ def get_article_title(data, pageid):
     """ parse data and extract article title """
 
     return data[pageid]['title']
+
+
+def calculate_wordcount(text):
+    """
+    Get the total number of words in the input text
+    used for extract (first paragraph of article)
+    """
+    total = len(text.split())
+
+    return total

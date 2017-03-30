@@ -31,16 +31,8 @@ def demo_liu_hu_lexicon(sentence, plot=False):
         else:
             y.append(0)  # neutral
 
-    print("Positive words:", pos_words)
-    print("Negative words:", neg_words)
-
-    # if pos_words > neg_words:
-    #     print('Positive')
-    # elif pos_words < neg_words:
-    #     print('Negative')
-    # elif pos_words == neg_words:
-    #     print('Neutral')
-
         # if plot == True:
         #     _show_plot(x, y, x_labels=tokenized_sent, y_labels=['Negative', 'Neutral', 'Positive'])
+
+    return pos_words, neg_words
 
