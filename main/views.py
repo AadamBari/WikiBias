@@ -77,10 +77,9 @@ def get_base_url(lang):
     """Produce the base Wikipedia api url for a particular language"""
 
     # get wikipedia code for languages input
-    code = {'English': 'en', 'French': 'fr', 'Italian': 'it', 'German': 'de', 'Spanish': 'es', 'Swedish': 'sv',
-            'Dutch': 'nl', 'Irish': 'ga', 'Russian': 'ru'}
+    code = get_language_code(lang)
 
-    url = "http://" + code[lang] + ".wikipedia.org/w/api.php"
+    url = "http://" + code + ".wikipedia.org/w/api.php"
     # url = "http://en.wikipedia.org/w/api.php"
 
     return url
