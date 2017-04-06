@@ -633,6 +633,34 @@
 
                             {% endif %}
 
+                            <br>
+                            {% if posWords > posWords2 %}
+                                There are more positive words in the introductory paragraph
+                                of the {{ lang1 }} article than the {{ lang2 }} article.
+                                {% if posRel1 > posRel2 %}
+                                    There are also more positive words relative to the total number of words in the
+                                    {{ lang1 }} paragraph ({{ posRel1 }}%) than in the {{ lang2 }} one ({{ posRel1 }}%).
+                                {% elif posRel2 > posRel2 %}
+                                    However, relative to the total number of words in the first paragraph,
+                                    there are more positive words in the {{ lang2 }} article.
+                                {% endif %}
+
+                            {% endif %}
+
+                            <br>
+                            {% if negWords > negWords2 %}
+                                There are more negative words in the introductory paragraph
+                                of the {{ lang1 }} article ({{ negWords }}) than the {{ lang2 }} article ({{ negWords2 }}).
+                                {% if negRel1 > negRel2 %}
+                                    There are also more negative words relative to the total number of words in the
+                                    {{ lang1 }} paragraph ({{ negRel1 }}%) than in the {{ lang2 }} one ({{ negRel2 }}%).
+                                {% elif negRel2 > negRel1 %}
+                                    However, relative to the total number of words in the first paragraph,
+                                    there are more negative words in the {{ lang2 }} articles.
+                                {% endif %}
+
+                            {% endif %}
+
                             </p>
 
 						</div>
